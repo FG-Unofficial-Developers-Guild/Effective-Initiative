@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-EffectInitiative
 <root release="3.0" version="3">
-	<announcement text="Effective Initiative v1.1\rby Ryan Hagelstrom 2021-2022" font="emotefont" icon="EffectiveInitiative"/>
+	<announcement text="Effective Initiative v1.2\rby Ryan Hagelstrom 2021-2023" font="emotefont" icon="EffectiveInitiative" />
 	<properties>
-    	<loadorder>120</loadorder>
+		<loadorder>120</loadorder>
 		<name>Feature: Effective Initiative</name>
-		<version>1.1</version>
+		<version>1.2</version>
 		<author>Ryan Hagelstrom</author>
 		<description>Recalcualtes the act on inititive value of effects if inititive is rolled each round</description>
 	</properties>
 	<base>
-    		<icon name="EffectiveInitiative" file="graphics/icons/effectiveinitiative.png"></icon>
-    		<script name="EffectsManagerEffectiveInitiative" file="scripts/manager_effect_effective_initiative.lua" />
-			<includefile source="strings/strings_ei.xml" />
-  	</base>
+		<icon name="EffectiveInitiative" file="graphics/icons/effectiveinitiative.png" />
+		<script name="EffectsManagerEffectiveInitiative" file="scripts/manager_effect_effective_initiative.lua" />
+		<includefile source="strings/strings_ei.xml" />
+	</base>
 </root>

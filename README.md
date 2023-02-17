@@ -1,7 +1,8 @@
-# Effective-Initiative
+[![Build FG Extension](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/luacheck.yml)
+# EffectiveInitiative
 
-**Current Version:** 1.1
-**Last Updated:** 11/10/22
+**Current Version:** 1.2
+**Last Updated:** 02/17/22
 
 Extension for FantasyGrounds which recalculates effects "initiative to act on" value at the start of each round when using the house rule "Roll init each round"
 
