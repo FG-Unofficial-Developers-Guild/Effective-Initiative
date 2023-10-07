@@ -2,6 +2,9 @@
 --	  	Copyright © 2021
 --	  	This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 --	  	https://creativecommons.org/licenses/by-sa/4.0/
+--
+-- luacheck: globals customRoundStart reevaluateAllEffects reevaluateEffects customHandleApplyInit customOnTurnStartEvent customNextActor onInit
+-- luacheck: globals RRRollManager FriendZone
 local handleApplyInit = nil;
 local onTurnStartEvent = nil;
 local nextActor = nil;
@@ -92,8 +95,14 @@ function onInit()
             CombatManager.onTurnStartEvent = customOnTurnStartEvent;
             CombatManager.nextActor = customNextActor;
 
-            OptionsManager.registerOption2('EFFECTIVE_INITIATIVE', false, 'option_effective_initiative', 'option_ei_rr', 'option_entry_cycler',
-                                           {labels = 'PCs Only|All', values = 'pcs|all', baselabel = 'option_val_off', baseval = 'off', default = 'off'});
+            OptionsManager.registerOption2('EFFECTIVE_INITIATIVE', false, 'option_effective_initiative', 'option_ei_rr',
+                                           'option_entry_cycler', {
+                labels = 'PCs Only|All',
+                values = 'pcs|all',
+                baselabel = 'option_val_off',
+                baseval = 'off',
+                default = 'off'
+            });
         end
     end
 end
