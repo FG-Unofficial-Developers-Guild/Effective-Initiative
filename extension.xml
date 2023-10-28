@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root release="3.0" version="3">
-	<announcement text="Effective Initiative v1.2\rby Ryan Hagelstrom 2021-2023" font="emotefont" icon="EffectiveInitiative" />
+	<announcement text="Effective Initiative v1.3\rby Ryan Hagelstrom 2021-2023" font="emotefont" icon="EffectiveInitiative" />
 	<properties>
 		<loadorder>120</loadorder>
 		<name>Feature: Effective Initiative</name>
-		<version>1.2</version>
+		<version>1.3</version>
 		<author>Ryan Hagelstrom</author>
 		<description>Recalcualtes the act on inititive value of effects if inititive is rolled each round</description>
 	</properties>

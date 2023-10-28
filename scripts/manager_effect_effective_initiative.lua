@@ -10,7 +10,7 @@ local onTurnStartEvent = nil;
 local nextActor = nil;
 
 -- Counter of outstanding init rolls
-local nOutstandingRolls = 0
+local nOutstandingRolls = 0;
 
 function customRoundStart()
     if OptionsManager.isOption('HRIR', 'on') then
@@ -22,8 +22,10 @@ function customRoundStart()
                 if FriendZone then
                     bCohort = FriendZone.isCohort(nodeCT);
                 end
+                local bPC = ActorManager.isPC(nodeCT);
                 if OptionsManager.isOption('EFFECTIVE_INITIATIVE', 'all') or
-                    (OptionsManager.isOption('EFFECTIVE_INITIATIVE', 'pcs') and (ActorManager.isPC(nodeCT) or bCohort)) then
+                    (OptionsManager.isOption('EFFECTIVE_INITIATIVE', 'pcsonly') and bPC) or
+                    (OptionsManager.isOption('EFFECTIVE_INITIATIVE', 'pcs') and (bPC or bCohort)) then
                     nOutstandingRolls = nOutstandingRolls + 1;
                     RRRollManager.onButtonPress('init', nodeCT);
                 end
@@ -97,8 +99,8 @@ function onInit()
 
             OptionsManager.registerOption2('EFFECTIVE_INITIATIVE', false, 'option_effective_initiative', 'option_ei_rr',
                                            'option_entry_cycler', {
-                labels = 'PCs Only|All',
-                values = 'pcs|all',
+                labels = 'PCs Only|PCs and Cohorts|All',
+                values = 'pcsonly|pcs|all',
                 baselabel = 'option_val_off',
                 baseval = 'off',
                 default = 'off'
