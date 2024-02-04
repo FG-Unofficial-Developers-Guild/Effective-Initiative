@@ -1,5 +1,7 @@
+
+# Effective Initiative
+
 [![Build FG Extension](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/EffectiveInitiative/actions/workflows/luacheck.yml)
-# EffectiveInitiative
 
 **Current Version:** 1.3
 **Last Updated:** 10/28/23
