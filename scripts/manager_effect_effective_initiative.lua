@@ -1,10 +1,10 @@
 --  	Author: Ryan Hagelstrom
---	  	Copyright © 2021
---	  	This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
---	  	https://creativecommons.org/licenses/by-sa/4.0/
+--      Copyright © 2021-2024
+--      Please see the license file included with this distribution for
+--      attribution and copyright information.
 --
 -- luacheck: globals customRoundStart reevaluateAllEffects reevaluateEffects customHandleApplyInit customOnTurnStartEvent customNextActor onInit
--- luacheck: globals RRRollManager FriendZone
+-- luacheck: globals RRRollManager Pets
 local handleApplyInit = nil;
 local onTurnStartEvent = nil;
 local nextActor = nil;
@@ -19,8 +19,8 @@ function customRoundStart()
             local ctEntries = CombatManager.getCombatantNodes();
             for _, nodeCT in pairs(ctEntries) do
                 local bCohort = false;
-                if FriendZone then
-                    bCohort = FriendZone.isCohort(nodeCT);
+                if Pets then
+                    bCohort = Pets.isCohort(nodeCT);
                 end
                 local bPC = ActorManager.isPC(nodeCT);
                 if OptionsManager.isOption('EFFECTIVE_INITIATIVE', 'all') or
@@ -99,7 +99,7 @@ function onInit()
 
             OptionsManager.registerOption2('EFFECTIVE_INITIATIVE', false, 'option_effective_initiative', 'option_ei_rr',
                                            'option_entry_cycler', {
-                labels = 'PCs Only|PCs and Cohorts|All',
+                labels = 'PCs Only|PCs and Pets|All',
                 values = 'pcsonly|pcs|all',
                 baselabel = 'option_val_off',
                 baseval = 'off',
