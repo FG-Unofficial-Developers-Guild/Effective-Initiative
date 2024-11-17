@@ -35,8 +35,7 @@ function iconify()
     fi
 
     if [ -n "$filename" ] && [[ $filename == *.svg ]]; then
-        filename_stripped="${filename%.*}"
-        filename_stripped="${filename##*/}"
+        filename_stripped="${filename%.svg}"
         filename_png="$filename_stripped"
         filename_png+=".png"
         filename_webp="$filename_stripped"

@@ -31,10 +31,10 @@ function customRoundStart()
                 end
             end
             if nOutstandingRolls == 0 then
-                reevaluateAllEffects();
+                EffectsManagerEffectiveInitiative.reevaluateAllEffects();
             end
         else
-            reevaluateAllEffects();
+            EffectsManagerEffectiveInitiative.reevaluateAllEffects();
         end
     end
 end
@@ -42,7 +42,7 @@ end
 function reevaluateAllEffects()
     local ctEntries = CombatManager.getCombatantNodes();
     for _, nodeCT in pairs(ctEntries) do
-        reevaluateEffects(nodeCT);
+        EffectsManagerEffectiveInitiative.reevaluateEffects(nodeCT);
     end
 end
 
@@ -50,11 +50,17 @@ function reevaluateEffects(nodeCT)
     for _, nodeEffect in pairs(DB.getChildren(nodeCT, 'effects')) do
         if (DB.getValue(nodeEffect, 'duration', '') ~= 0) then
             local sSource = DB.getValue(nodeEffect, 'source_name', '');
-            if sSource == '' then
-                sSource = ActorManager.getCTPathFromActorNode(nodeCT);
+            local sEffect = DB.getValue(nodeEffect, 'label', '');
+            local nInit;
+            if sEffect:match('%(TI%)') then
+                nInit = DB.getValue(nodeCT, 'initresult', 0);
+            else
+                if sSource == '' then
+                    sSource = ActorManager.getCTPathFromActorNode(nodeCT);
+                end
+                local nodeSource = ActorManager.getCTNode(sSource);
+                nInit = DB.getValue(nodeSource, 'initresult', 0);
             end
-            local nodeSource = ActorManager.getCTNode(sSource);
-            local nInit = DB.getValue(nodeSource, 'initresult', 0);
             DB.setValue(nodeEffect, 'init', 'number', nInit);
         end
     end
@@ -66,7 +72,7 @@ function customHandleApplyInit(msgOOB)
         nOutstandingRolls = nOutstandingRolls - 1;
         -- Wait until everything is settled before readjusting the order of the effects
         if nOutstandingRolls == 0 then
-            reevaluateAllEffects();
+            EffectsManagerEffectiveInitiative.reevaluateAllEffects();
             nextActor();
         end
     end
